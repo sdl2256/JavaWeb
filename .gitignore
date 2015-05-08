@@ -4,3 +4,6 @@ maven-servlet-demo/target/
 maven-struts-demo/target/
 maven-struts-demo/.idea/
 maven-struts-demo/maven-struts-demo.iml
+spring3-mvc-demo/.idea/
+spring3-mvc-demo/target/
+spring3-mvc-demo/spring3-mvc-demo.iml
