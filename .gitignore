@@ -1,3 +1,6 @@
-mavenweb1/.idea/
-mavenweb1/mavenweb1.iml
-mavenweb1/target/
+maven-servlet-demo/.idea/
+maven-servlet-demo/maven-servlet-demo.iml
+maven-servlet-demo/target/
+maven-struts-demo/target/
+maven-struts-demo/.idea/
+maven-struts-demo/maven-struts-demo.iml
