@@ -39,6 +39,13 @@ public class TestMain {
         Cat cat = (Cat) context.getBean("cat");
         System.out.println(cat.getName());
 
+
+        com.sundl.factory.Car car2 = (com.sundl.factory.Car) context.getBean("cars2");
+        System.out.println(car2);
+        com.sundl.factory.Car car3 = (com.sundl.factory.Car) context.getBean("cars3");
+        System.out.println(car3);
+        com.sundl.factory.Car car4 = (com.sundl.factory.Car) context.getBean("car4");
+        System.out.println(car4);
         context.close();
     }
 }

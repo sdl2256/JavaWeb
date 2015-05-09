@@ -102,4 +102,24 @@
 
     <!-- 配置bean的后置处理器,不需要id，自动识别为BeanPostProcessor -->
     <bean class="com.sundl.cycle.MyBeanPostProcessor"></bean>
+
+    <!-- 静态工厂方法配置bean,注意不是配置静态工厂实例，而是配置bean实例 -->
+    <bean id="cars2" class="com.sundl.factory.StaticCarFactory" factory-method="getCar">
+        <constructor-arg value="aodi"></constructor-arg>
+    </bean>
+
+
+    <!-- 配置工厂的实例 ,实例工厂方法-->
+    <bean id="instanceCarFactory" class="com.sundl.factory.InstanceCarFactory">
+
+    </bean>
+
+    <bean id="cars3" factory-bean="instanceCarFactory" factory-method="getCar">
+        <constructor-arg value="ford"></constructor-arg>
+    </bean>
+
+    <!-- 通过FactoryBean创建Car-->
+    <bean id="car4" class="com.sundl.factory.CarFactoryBean">
+        <property name="brand" value="BWM"></property>
+    </bean>
 </beans>
