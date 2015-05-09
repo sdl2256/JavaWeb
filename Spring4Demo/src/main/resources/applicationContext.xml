@@ -94,4 +94,12 @@
             </props>
         </property>
     </bean>
+
+    <bean id="cat" class="com.sundl.cycle.Cat" init-method="init" destroy-method="destroy">
+
+        <property name="name" value="bosimao"></property>
+    </bean>
+
+    <!-- 配置bean的后置处理器,不需要id，自动识别为BeanPostProcessor -->
+    <bean class="com.sundl.cycle.MyBeanPostProcessor"></bean>
 </beans>

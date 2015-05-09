@@ -1,5 +1,6 @@
 package com.sundl.helloworld;
 
+import com.sundl.cycle.Cat;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.sql.DataSource;
@@ -34,5 +35,10 @@ public class TestMain {
         DataSource dataSource = (DataSource) context.getBean("dataSource");
         System.out.println("c3p0 link: " + dataSource.getConnection());
 //        System.out.println("c3p0 link: " + dataSource.getConnection());
+
+        Cat cat = (Cat) context.getBean("cat");
+        System.out.println(cat.getName());
+
+        context.close();
     }
 }
