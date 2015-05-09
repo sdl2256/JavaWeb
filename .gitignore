@@ -7,3 +7,6 @@ maven-struts-demo/maven-struts-demo.iml
 spring3-mvc-demo/.idea/
 spring3-mvc-demo/target/
 spring3-mvc-demo/spring3-mvc-demo.iml
+*/target/
+*/.idea/
+*/*.iml
