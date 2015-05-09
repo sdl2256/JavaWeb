@@ -1,5 +1,7 @@
 package com.sundl.helloworld;
 
+import com.sundl.annotation.TestObject;
+import com.sundl.annotation.controller.UserController;
 import com.sundl.cycle.Cat;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -46,6 +48,12 @@ public class TestMain {
         System.out.println(car3);
         com.sundl.factory.Car car4 = (com.sundl.factory.Car) context.getBean("car4");
         System.out.println(car4);
+
+        TestObject testObject = (TestObject) context.getBean("testObject");
+        System.out.println(testObject);
+
+        UserController userController = (UserController) context.getBean("userController");
+        userController.execute();
         context.close();
     }
 }

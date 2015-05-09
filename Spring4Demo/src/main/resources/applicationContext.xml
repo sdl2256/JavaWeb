@@ -122,4 +122,20 @@
     <bean id="car4" class="com.sundl.factory.CarFactoryBean">
         <property name="brand" value="BWM"></property>
     </bean>
+    <!--
+        <context:component-scan base-package="com.sundl.annotation"
+                resource-pattern="repository/*.class">
+
+        </context:component-scan>
+        -->
+    <!-- context:include-filter 指定包含哪些表达式的组件，需要设置 use-default-filters 为false-->
+    <context:component-scan base-package="com.sundl.annotation">
+        <!--<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>-->
+        <!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>-->
+        <!--<context:exclude-filter type="assignable" expression="com.sundl.annotation.repository.UserRepository"/>-->
+        <!-- 需要设置use-default-filters 为 false -->
+        <!--<context:include-filter expression="com.sundl.annotation.controller.UserController" type="assignable"/>-->
+    </context:component-scan>
+
+    <context:component-scan base-package="com.sundl.generic.di"/>
 </beans>
