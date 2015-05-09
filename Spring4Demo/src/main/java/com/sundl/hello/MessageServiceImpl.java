@@ -5,6 +5,6 @@ package com.sundl.hello;
  */
 public class MessageServiceImpl implements MessageService {
     public String getMessage() {
-        return "ÄãºÃ£¬This is a test message.";
+        return "ä½ å¥½ï¼ŒThis is a test message.";
     }
 }

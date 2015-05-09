@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:db.properties" system-properties-mode="FALLBACK"/>
+
+    <bean id="helloWorld" class="com.sundl.helloworld.HelloWorld">
+        <property name="name" value="SpringTest"></property>
+    </bean>
+
+    <bean id="car" class="com.sundl.helloworld.Car">
+        <constructor-arg value="baoma" type="java.lang.String">
+
+        </constructor-arg>
+        <constructor-arg>
+            <null/>
+        </constructor-arg>
+        <!--<constructor-arg type="java.lang.String">-->
+        <!--<value>-->
+        <!--<![CDATA[<SHANGHAI^>]]>-->
+        <!--</value>-->
+        <!--</constructor-arg>-->
+    </bean>
+    <bean id="person" class="com.sundl.helloworld.Person">
+        <property name="name" value="sun"></property>
+        <property name="age" value="24"></property>
+        <property name="car" ref="car"></property>
+        <property name="car.corp" value="奥迪"></property>
+    </bean>
+
+    <bean id="book1" class="com.sundl.helloworld.Book">
+        <property name="bookname" value="三国"></property>
+    </bean>
+    <bean id="book2" class="com.sundl.helloworld.Book">
+        <property name="bookname" value="水浒"></property>
+    </bean>
+    <bean id="book3" class="com.sundl.helloworld.Book">
+        <property name="bookname" value="西游记"></property>
+    </bean>
+
+    <bean id="personbook" class="com.sundl.helloworld.Person">
+        <property name="name" value="sun"></property>
+        <property name="age" value="24"></property>
+        <property name="car" ref="car"></property>
+        <property name="car.corp" value="奥迪"></property>
+        <property name="books">
+            <list>
+                <ref bean="book1"></ref>
+                <ref bean="book2"></ref>
+                <ref bean="book3"></ref>
+                <bean class="com.sundl.helloworld.Book">
+                    <property name="bookname" value="红楼梦"></property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+
+    <!--
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql:///sundl"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="123456"></property>
+    </bean>
+    -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="user" value="${username}"/>
+        <property name="password" value="${password}"/>
+        <property name="driverClass" value="${driverClass}"/>
+        <property name="jdbcUrl" value="${jdbcUrl}"/>
+    </bean>
+    <!--
+    <bean id="dataSource" class="com.sundl.helloworld.MyDataSourcece">
+        <property name="properties">
+            <props>
+                <prop key="user">root</prop>
+                <prop key="password">1234</prop>
+                <prop key="jdbcURL">jdbc:mysql:///sundl</prop>
+                <prop key="driverClass">com.mysql.jdbc.Driver</prop>
+            </props>
+        </property>
+    </bean>
+-->
+    <bean id="mydataSource" class="com.sundl.helloworld.MyDataSource">
+        <property name="properties">
+            <props>
+                <prop key="user">${username}</prop>
+                <prop key="password">${password}</prop>
+                <prop key="driverClass">${driverClass}</prop>
+                <prop key="jdbcUrl">${jdbcUrl}</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
