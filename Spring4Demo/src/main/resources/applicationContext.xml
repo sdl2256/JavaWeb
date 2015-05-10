@@ -2,15 +2,16 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <context:property-placeholder location="classpath:db.properties" system-properties-mode="FALLBACK"/>
 
-    <bean id="helloWorld" class="com.sundl.helloworld.HelloWorld">
+    <bean id="helloWorld" class="com.sundl.spring.helloworld.HelloWorld">
         <property name="name" value="SpringTest"></property>
     </bean>
 
-    <bean id="car" class="com.sundl.helloworld.Car">
+    <bean id="car" class="com.sundl.spring.helloworld.Car">
         <constructor-arg value="baoma" type="java.lang.String">
 
         </constructor-arg>
@@ -23,24 +24,24 @@
         <!--</value>-->
         <!--</constructor-arg>-->
     </bean>
-    <bean id="person" class="com.sundl.helloworld.Person">
+    <bean id="person" class="com.sundl.spring.helloworld.Person">
         <property name="name" value="sun"></property>
         <property name="age" value="24"></property>
         <property name="car" ref="car"></property>
         <property name="car.corp" value="奥迪"></property>
     </bean>
 
-    <bean id="book1" class="com.sundl.helloworld.Book">
+    <bean id="book1" class="com.sundl.spring.helloworld.Book">
         <property name="bookname" value="三国"></property>
     </bean>
-    <bean id="book2" class="com.sundl.helloworld.Book">
+    <bean id="book2" class="com.sundl.spring.helloworld.Book">
         <property name="bookname" value="水浒"></property>
     </bean>
-    <bean id="book3" class="com.sundl.helloworld.Book">
+    <bean id="book3" class="com.sundl.spring.helloworld.Book">
         <property name="bookname" value="西游记"></property>
     </bean>
 
-    <bean id="personbook" class="com.sundl.helloworld.Person">
+    <bean id="personbook" class="com.sundl.spring.helloworld.Person">
         <property name="name" value="sun"></property>
         <property name="age" value="24"></property>
         <property name="car" ref="car"></property>
@@ -50,7 +51,7 @@
                 <ref bean="book1"></ref>
                 <ref bean="book2"></ref>
                 <ref bean="book3"></ref>
-                <bean class="com.sundl.helloworld.Book">
+                <bean class="com.sundl.spring.helloworld.Book">
                     <property name="bookname" value="红楼梦"></property>
                 </bean>
             </list>
@@ -84,7 +85,7 @@
         </property>
     </bean>
 -->
-    <bean id="mydataSource" class="com.sundl.helloworld.MyDataSource">
+    <bean id="mydataSource" class="com.sundl.spring.helloworld.MyDataSource">
         <property name="properties">
             <props>
                 <prop key="user">${username}</prop>
@@ -95,22 +96,22 @@
         </property>
     </bean>
 
-    <bean id="cat" class="com.sundl.cycle.Cat" init-method="init" destroy-method="destroy">
+    <bean id="cat" class="com.sundl.spring.cycle.Cat" init-method="init" destroy-method="destroy">
 
         <property name="name" value="bosimao"></property>
     </bean>
 
     <!-- 配置bean的后置处理器,不需要id，自动识别为BeanPostProcessor -->
-    <bean class="com.sundl.cycle.MyBeanPostProcessor"></bean>
+    <bean class="com.sundl.spring.cycle.MyBeanPostProcessor"></bean>
 
     <!-- 静态工厂方法配置bean,注意不是配置静态工厂实例，而是配置bean实例 -->
-    <bean id="cars2" class="com.sundl.factory.StaticCarFactory" factory-method="getCar">
+    <bean id="cars2" class="com.sundl.spring.factory.StaticCarFactory" factory-method="getCar">
         <constructor-arg value="aodi"></constructor-arg>
     </bean>
 
 
     <!-- 配置工厂的实例 ,实例工厂方法-->
-    <bean id="instanceCarFactory" class="com.sundl.factory.InstanceCarFactory">
+    <bean id="instanceCarFactory" class="com.sundl.spring.factory.InstanceCarFactory">
 
     </bean>
 
@@ -119,7 +120,7 @@
     </bean>
 
     <!-- 通过FactoryBean创建Car-->
-    <bean id="car4" class="com.sundl.factory.CarFactoryBean">
+    <bean id="car4" class="com.sundl.spring.factory.CarFactoryBean">
         <property name="brand" value="BWM"></property>
     </bean>
     <!--
@@ -129,13 +130,16 @@
         </context:component-scan>
         -->
     <!-- context:include-filter 指定包含哪些表达式的组件，需要设置 use-default-filters 为false-->
-    <context:component-scan base-package="com.sundl.annotation">
+    <context:component-scan base-package="com.sundl.spring.annotation">
         <!--<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>-->
         <!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>-->
-        <!--<context:exclude-filter type="assignable" expression="com.sundl.annotation.repository.UserRepository"/>-->
+        <!--<context:exclude-filter type="assignable" expression="UserRepository"/>-->
         <!-- 需要设置use-default-filters 为 false -->
-        <!--<context:include-filter expression="com.sundl.annotation.controller.UserController" type="assignable"/>-->
+        <!--<context:include-filter expression="UserController" type="assignable"/>-->
     </context:component-scan>
 
-    <context:component-scan base-package="com.sundl.generic.di"/>
+    <context:component-scan base-package="com.sundl.spring.generic.di"/>
+    <context:component-scan base-package="com.sundl.spring.aop"/>
+    <!-- 使用AspectJ 注解起作用，自动为匹配的类生成代理对象-->
+    <aop:aspectj-autoproxy/>
 </beans>
