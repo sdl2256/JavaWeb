@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <import resource="classpath:spring-jpaFactory.xml"/>
+
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
+
+    <context:annotation-config/>
+    <!-- DAO -->
+    <context:component-scan base-package="com.sundl.dao">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
+
+    <jaxws:endpoint
+            id="helloWorld"
+            implementor="com.sundl.demo.HelloWorldImpl"
+            address="/helloWorld"/>
+
+    <bean id="client" class="com.sundl.demo.HelloWorld"
+          factory-bean="clientFactory" factory-method="create"/>
+
+    <bean id="clientFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+        <property name="serviceClass" value="com.sundl.demo.HelloWorld"/>
+        <property name="address" value="http://localhost:8083/cxf/webservice/helloWorld"/>
+    </bean>
+
+</beans>

@@ -3,6 +3,7 @@ package com.sundl.spring.aop.calculator;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -20,11 +21,11 @@ public class LoggingAspect {
 
 
     /**
-     *
      * 定义一个方法，用于声明切入点表达式，一般地，该方法中不需要写代码
      */
     @Pointcut("execution(public int com.sundl.spring.aop.calculator.ArithmeticCalculatorImpl.*(int,int))")
-    public void declareJoinPointExpresion(){}
+    public void declareJoinPointExpresion() {
+    }
 
 
     //声明为前置通知，在哪些方法开始之前执行,自动生成代理对象

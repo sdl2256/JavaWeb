@@ -17,7 +17,7 @@ public class TestMain {
 
 //        HelloWorld helloWorld = new HelloWorld();
 //        helloWorld.setName("第哦按");
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
 //        HelloWorld helloWorld = (HelloWorld) context.getBean("helloWorld");
 //        helloWorld.hello();
         Car car = (Car) context.getBean("car");
@@ -33,27 +33,27 @@ public class TestMain {
         MyDataSource myDataSource = (MyDataSource) context.getBean("mydataSource");
         System.out.println(myDataSource);
 
-
-        DataSource dataSource = (DataSource) context.getBean("dataSource");
-        System.out.println("c3p0 link: " + dataSource.getConnection());
+//
+//        DataSource dataSource = (DataSource) context.getBean("dataSource");
+//        System.out.println("c3p0 link: " + dataSource.getConnection());
 //        System.out.println("c3p0 link: " + dataSource.getConnection());
 
         Cat cat = (Cat) context.getBean("cat");
         System.out.println(cat.getName());
 
-
-        com.sundl.spring.factory.Car car2 = (com.sundl.spring.factory.Car) context.getBean("cars2");
-        System.out.println(car2);
-        com.sundl.spring.factory.Car car3 = (com.sundl.spring.factory.Car) context.getBean("cars3");
-        System.out.println(car3);
-        com.sundl.spring.factory.Car car4 = (com.sundl.spring.factory.Car) context.getBean("car4");
-        System.out.println(car4);
-
-        TestObject testObject = (TestObject) context.getBean("testObject");
-        System.out.println(testObject);
-
-        UserController userController = (UserController) context.getBean("userController");
-        userController.execute();
-        context.close();
+//
+//        com.sundl.spring.factory.Car car2 = (com.sundl.spring.factory.Car) context.getBean("cars2");
+//        System.out.println(car2);
+//        com.sundl.spring.factory.Car car3 = (com.sundl.spring.factory.Car) context.getBean("cars3");
+//        System.out.println(car3);
+//        com.sundl.spring.factory.Car car4 = (com.sundl.spring.factory.Car) context.getBean("car4");
+//        System.out.println(car4);
+//
+//        TestObject testObject = (TestObject) context.getBean("testObject");
+//        System.out.println(testObject);
+//
+//        UserController userController = (UserController) context.getBean("userController");
+//        userController.execute();
+//        context.close();
     }
 }

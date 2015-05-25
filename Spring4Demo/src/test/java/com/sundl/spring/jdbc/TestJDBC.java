@@ -29,7 +29,7 @@ public class TestJDBC {
 
     @Test
     public void testQueryForObjectResult() throws Exception {
-        String sql = "SELECT count(*) from t_user";
+        String sql = "SELECT count(*) from tb_person";
         Long count = jdbcTemplate.queryForObject(sql, Long.class);
         System.out.println(count);
 
@@ -37,7 +37,7 @@ public class TestJDBC {
 
     @Test
     public void testQueryForList() throws Exception {
-        String sql = "SELECT id,birthday,file,gender,info,pname name from t_user WHERE id > ?";
+        String sql = "SELECT id,birthday,file,gender,info,name name from tb_person WHERE id > ?";
 
         RowMapper<User> rowMapper = new BeanPropertyRowMapper<User>(User.class);
         List<User> users = jdbcTemplate.query(sql, rowMapper, 2);
@@ -49,7 +49,7 @@ public class TestJDBC {
     @Test
     public void testQueryForObject() throws Exception {
         //使用列的别名映射类的属性名
-        String sql = "SELECT id,birthday,file,gender,info,pname name from t_user WHERE id = ?";
+        String sql = "SELECT id,birthday,file,gender,info,name name from tb_person WHERE id = ?";
         //不是这个方法
 //        User user = jdbcTemplate.queryForObject(sql, User.class, 2);
 
@@ -69,8 +69,8 @@ public class TestJDBC {
      */
     @Test
     public void testUpdate() throws Exception {
-        String sql = "UPDATE t_user SET pname = ? WHERE id = ?";
-        jdbcTemplate.update(sql, "Jack 孙", 1);
+        String sql = "UPDATE tb_person SET name = ? WHERE id = ?";
+        jdbcTemplate.update(sql, "Jack-孙", 1);
 
     }
 
@@ -82,7 +82,7 @@ public class TestJDBC {
 
     @Test
     public void testBatchUpdate() throws Exception {
-        String sql = "INSERT INTO t_user(birthday,gender, info, pname) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO tb_person(birthday,gender, info, name) VALUES(?,?,?,?)";
         List<Object[]> batcheArgs = new ArrayList<Object[]>();
         batcheArgs.add(new Object[]{new Date(), "MAN", "AA", "AAA"});
         batcheArgs.add(new Object[]{new Date(), "MAN", "BB", "bbb"});
