@@ -1,5 +1,7 @@
 package com.sundl.dao;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -18,6 +20,12 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
         return t;
     }
 
+    public T find(Class<? extends T> clazz, String id) {
+        T t = em.find(clazz, id);
+        return t;
+    }
+
+    @Transactional
     public T persist(T t) {
         em.persist(t);
         return t;

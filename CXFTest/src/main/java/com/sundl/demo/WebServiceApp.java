@@ -7,10 +7,10 @@ import javax.xml.ws.Endpoint;
  */
 public class WebServiceApp {
     public static void main(String[] args) {
-        System.out.println("web service start.");
+        System.out.println("web OrderService start.");
         HelloWorldImpl imp = new HelloWorldImpl();
         String address = "http://localhost:8080/helloWorld";
         Endpoint.publish(address, imp);
-        System.out.println("web service started.");
+        System.out.println("web OrderService started.");
     }
 }

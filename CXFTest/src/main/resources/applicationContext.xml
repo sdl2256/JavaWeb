@@ -9,10 +9,8 @@
     <import resource="classpath:META-INF/cxf/cxf.xml"/>
     <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
 
-    <context:annotation-config/>
-    <!-- DAO -->
-    <context:component-scan base-package="com.sundl.dao">
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    <context:component-scan base-package="com.sundl">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
     <jaxws:endpoint
@@ -27,5 +25,8 @@
         <property name="serviceClass" value="com.sundl.demo.HelloWorld"/>
         <property name="address" value="http://localhost:8083/cxf/webservice/helloWorld"/>
     </bean>
+
+    <jaxws:endpoint id="orderWebService" implementor="com.sundl.webservice.OrderWebServiceImpl"
+                    address="/orderWebService" />
 
 </beans>
