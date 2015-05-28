@@ -1,16 +1,23 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: SDL
-  Date: 2015/5/25
-  Time: 16:07
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title></title>
+    <title>order.jsp</title>
 </head>
 <body>
-This is order jsp.
+<table border="1">
+    <tr>
+        <th>Order Id</th>
+        <th>Order amount</th>
+        <th>detail</th>
+    </tr>
+    <c:forEach items="${list}" var="order">
+        <tr>
+            <td>${order.orderid}</td>
+            <td>${order.amount}</td>
+            <td><a href="${pageContext.request.contextPath}/main/getitems/${order.orderid}.do">详细信息</a></td>
+        </tr>
+    </c:forEach>
+</table>
 </body>
 </html>

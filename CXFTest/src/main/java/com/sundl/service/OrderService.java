@@ -19,5 +19,6 @@ public interface OrderService {
 
     OrderItem getItemById(Integer id);
 
+    List<OrderItem> getItemByOrderId(String orderId);
 
 }

@@ -1,5 +1,8 @@
 package com.sundl.entity;
 
+import com.sundl.vo.VOrder;
+import com.sundl.vo.VOrderItem;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,8 +49,6 @@ public class OrderItem {
         this.sellPrice = sellPrice;
     }
 
-    //使用注解：@XmlTransient，在one的getList方法上火many的parent的getter方法上添加 @XmlTransient，表示不生成这个对象的xml文档	循环引用:
-    @XmlTransient
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}
             , fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "order_id")
@@ -62,4 +63,5 @@ public class OrderItem {
     public void afterUnmarshal(Unmarshaller u, Object parent) {
         this.order = (Order) parent;
     }
+
 }

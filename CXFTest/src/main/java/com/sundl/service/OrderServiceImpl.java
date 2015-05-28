@@ -32,4 +32,9 @@ public class OrderServiceImpl implements OrderService {
     public OrderItem getItemById(Integer id) {
         return (OrderItem) orderDao.find(OrderItem.class, id);
     }
+
+    public List<OrderItem> getItemByOrderId(String orderId) {
+        List list = orderDao.getItemByOrderId(orderId);
+        return list;
+    }
 }

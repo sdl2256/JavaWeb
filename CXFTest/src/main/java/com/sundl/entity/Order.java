@@ -1,5 +1,8 @@
 package com.sundl.entity;
 
+import com.sundl.vo.VOrder;
+import com.sundl.vo.VOrderItem;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,6 +13,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "orders")
@@ -38,6 +42,9 @@ public class Order {
         this.amount = amount;
     }
 
+    //使用注解：@XmlTransient，在one的getList方法上火many的parent的getter方法上添加 @XmlTransient，
+    //表示不生成这个对象的xml文档	循环引用:
+    @XmlTransient
     @OneToMany(cascade = {CascadeType.ALL}
             , fetch = FetchType.LAZY, mappedBy = "order")
     public Set<OrderItem> getOrderItem() {

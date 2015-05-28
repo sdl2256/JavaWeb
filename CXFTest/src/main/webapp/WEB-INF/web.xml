@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+             http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
     <display-name>CXFTest</display-name>
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath*:applicationContext.xml</param-value>
+        <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
 
     <filter>
@@ -23,45 +28,36 @@
     </filter-mapping>
 
     <listener>
+        <description>spring监听器</description>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-    <listener>
-        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>
     <!-- 防止spring内存溢出监听器 -->
     <listener>
         <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
     </listener>
 
+    <!-- spring mvc servlet -->
     <servlet>
-        <servlet-name>CXFServlet</servlet-name>
-        <display-name>CXFServlet</display-name>
-        <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>CXFServlet</servlet-name>
-        <url-pattern>/webservice/*</url-pattern>
-    </servlet-mapping>
-
-
-    <servlet>
-        <servlet-name>mvcdispatcher</servlet-name>
+        <description>spring mvc servlet</description>
+        <servlet-name>springMvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
+            <description>spring mvc 配置文件</description>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath*:mvcdispatcher-servlet.xml</param-value>
+            <param-value>classpath:mvcdispatcher-servlet.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>mvcdispatcher</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <servlet-name>springMvc</servlet-name>
+        <url-pattern>*.do</url-pattern>
     </servlet-mapping>
 
-    <!-- 默认跳转到根目录下的页面，在这里为index.jsp -->
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>/index.jsp</welcome-file>
     </welcome-file-list>
+    <!-- 配置session超时时间，单位分钟 -->
+    <session-config>
+        <session-timeout>15</session-timeout>
+    </session-config>
 </web-app>

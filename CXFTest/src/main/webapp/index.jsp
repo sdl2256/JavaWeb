@@ -11,7 +11,9 @@
     <title>index.jsp</title>
 </head>
 <body>
-This is index jsp.
-<a href="${pageContext.request.contextPath}/main/getorder.do">getorder</a>
+This is index jsp.<br/>
+<a href="${pageContext.request.contextPath}/main/getorder/aaa.do">getorder</a><br/>
+<a href="${pageContext.request.contextPath}/main/getitems/e2842e39-74d5-4f05-8f96-06e1ff0a9244.do">getitems</a>
+<br/>
 </body>
 </html>
