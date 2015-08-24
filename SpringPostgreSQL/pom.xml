@@ -93,6 +93,22 @@
       <artifactId>testng</artifactId>
       <version>${testng.version}</version>
     </dependency>
+    <!-- WSServletContextListener -->
+    <dependency>
+      <groupId>com.sun.xml.ws</groupId>
+      <artifactId>jaxws-rt</artifactId>
+      <version>2.1.4</version>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.xml.fastinfoset</groupId>
+      <artifactId>FastInfoset</artifactId>
+      <version>1.2.9</version>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+    <!-- WSServletContextListener -->
   </dependencies>
   <build>
     <finalName>SpringPostgreSQL</finalName>

@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import javax.sql.DataSource;
 import java.util.Map;
 import java.util.UUID;
-
+import com.sun.xml.internal.ws.spi.ProviderImpl;
 /**
  * Created by SDL on 2015/6/3.
  */
