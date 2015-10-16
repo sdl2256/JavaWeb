@@ -1,5 +1,8 @@
 package com.sundl;
 
+import com.landsea.berkeleydb.Student;
+import org.apache.log4j.Logger;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -8,7 +11,10 @@ import java.net.URLEncoder;
  * Created by SDL on 2015/7/13.
  */
 public class Test {
+    private static final Logger logger = Logger.getLogger(Test.class);
+
     public static void main(String[] args) {
+
         /*
         System.out.println("打算");
         String string = "陆唯一";
@@ -21,7 +27,12 @@ public class Test {
             e.printStackTrace();
         }
         */
-        new Test().test("abc");
+//        new Test().test("abc");
+        Object student = new Student();
+        Class<?> aClass = student.getClass();
+        System.out.println(student);
+        System.out.println(aClass);
+
 
     }
 

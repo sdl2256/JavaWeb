@@ -39,7 +39,7 @@ public class Encoding {
 
         System.out.println("uid: " + enCrypt("qdshjd"));
         System.out.println("pwd: " + enCrypt("82636161"));
-      System.out.println("pwd: " + enCrypt("308"));
+        System.out.println("pwd: " + enCrypt("308"));
 
         System.out.println("uid: " + deCrypt("maneteb"));
         System.out.println("pwd: " + deCrypt("223566"));
