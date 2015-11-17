@@ -17,11 +17,11 @@ public class TestDate {
 
     public static void main(String[] args) {
         short month = 0, day = 0, hour = 24, minute = 60;
-        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         try {
             String now = sdf.format(new Date());
             System.out.println(now);
-            now = null;
+//            now = null;
 //            Date date = sdf.parse("01-14 16:58");
             Date date = sdf.parse(now);
             TimeZone chinaTimeZone = TimeZone.getTimeZone("Asia/Shanghai");
@@ -40,6 +40,9 @@ public class TestDate {
         System.out.println(day);
         System.out.println(hour);
         System.out.println(minute);
+
+        System.out.println("***************");
+        System.out.println(sdf.format(new Date(0, 0, 0)));
     }
 
 }
