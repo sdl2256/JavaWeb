@@ -101,6 +101,13 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
+
+        <dependency>
+            <groupId>cn.maritech</groupId>
+            <artifactId>dss-data</artifactId>
+            <version>0.03</version>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

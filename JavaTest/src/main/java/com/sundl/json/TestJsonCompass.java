@@ -8,21 +8,26 @@ import com.alibaba.fastjson.JSON;
 public class TestJsonCompass {
 
     public static void main(String[] args) {
-        String compass = "{\"@type\":\"com.sundl.json.CompassData\"," +
+        String compass = "{\"@type\":\"cn.maritech.dss.device.data.CompassData\"," +
                 "\"date\":1447665358162,\"deviceId\":\"COMPASS\",\"deviceType\":\"COMPASS\"," +
-                "\"heading\":43.4}";//,\"rateOfTurn\":-0.4D}";
+                "\"heading\":80.51}";//,\"rateOfTurn\":-0.4D}";
         String gps =
-                "{\"@type\":\"com.sundl.json.GPSData\"," +
+                "{\"@type\":\"cn.maritech.dss.device.data.GPSData\"," +
                         "\"altitude\":26,\"correctedCourse\":45,\"course\":45,\"date\":1447665359186," +
                         "\"deviceId\":\"GPS\",\"deviceType\":\"GPS\",\"latitude\":19.658067,\"longitude\":111.117483," +
                         "\"satellitesInUse\":9,\"speed\":21,\"utc\":1447665359000}";
 
 
-        CompassData compassData = JSON.parseObject(compass, CompassData.class);
+        cn.maritech.dss.device.data.CompassData compassData = JSON.parseObject(compass, cn.maritech.dss.device.data.CompassData.class);
         System.out.println(compassData);
 
+        CompassData cmData = new CompassData();
+        cmData.setHeading(compassData.getHeading());
+        cmData.setRateOfTurn(compassData.getRateOfTurn());
 
-        GPSData gpsData = JSON.parseObject(gps, GPSData.class);
+        cmData.setDate(compassData.getDate());
+        System.out.println(cmData);
+        cn.maritech.dss.device.data.GPSData gpsData = JSON.parseObject(gps, cn.maritech.dss.device.data.GPSData.class);
         System.out.println(gpsData);
     }
 }

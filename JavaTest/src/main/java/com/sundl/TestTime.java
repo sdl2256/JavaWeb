@@ -24,6 +24,13 @@ public class TestTime {
             System.out.println(date.getTime());//1428466212000
             date = sdf.parse("2015-07-08 12:10:12");
             System.out.println(date.getTime());//1436328612000
+
+            date = sdf.parse("2015-11-26 10:10:12");
+            System.out.println(date.getTime());//1448503812000
+
+            date = sdf.parse("2015-11-26 17:02:30");
+            System.out.println(date.getTime());//1448528550000
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -31,9 +38,15 @@ public class TestTime {
 
         Date date = new Date(1296555205000L);//2011-02-01 18:13:25
         Date date2 = new Date(1496555205000L);//2017-06-04 13:46:45
+        Date date3 = new Date(1447662455488L);//2015-11-16 16:27:35
+        Date date4 = new Date(1448423620000L);
+        //2015-11-25 11:53:40---1448423620000L
+        //2015-11-25 11:53:12---1448423592770L
 
+        System.out.println("------------------------"+format.format(date3));
         System.out.println(format.format(date));
         System.out.println(format.format(date2));
+        System.out.println(format.format(date4));
 
         Calendar c1 = Calendar.getInstance();
         c1.setTime(new Date());

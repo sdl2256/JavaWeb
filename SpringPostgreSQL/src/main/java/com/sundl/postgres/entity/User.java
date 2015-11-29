@@ -9,7 +9,7 @@ import javax.persistence.Table;
  * Created by SDL on 2015/6/3.
  */
 @Entity
-@Table(name = "test_user")
+@Table(name = "TBUser")
 public class User {
     private Integer id;
     private String username;
