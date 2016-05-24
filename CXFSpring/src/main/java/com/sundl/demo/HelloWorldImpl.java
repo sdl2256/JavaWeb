@@ -8,8 +8,8 @@ import java.util.Date;
  * Created by SDL on 2015/6/5.
  */
 public class HelloWorldImpl implements IHelloWorld {
-    public String sayHello(String username) {
 
+    public String sayHello(String username) {
         return "Hello " + username;
     }
 
@@ -22,6 +22,8 @@ public class HelloWorldImpl implements IHelloWorld {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
         Calendar cal = Calendar.getInstance();
+
+        cal.setTime(date);
 
         cal.add(Calendar.DATE, +4);
 

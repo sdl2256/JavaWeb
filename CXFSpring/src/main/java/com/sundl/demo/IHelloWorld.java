@@ -10,12 +10,16 @@ import java.util.Date;
  */
 @WebService
 public interface IHelloWorld {
+
     @WebMethod
-    public String sayHello(@WebParam(name = "username") String username);
+    String sayHello(@WebParam(name = "username") String username);
+
     @WebMethod
-    public Date getDateNow();
+    Date getDateNow();
+
     @WebMethod
-    public Date getDate(@WebParam(name = "date") Date date);
-    public void setUser(String username);
+    Date getDate(@WebParam(name = "date") Date date);
+
+    void setUser(String username);
 
 }

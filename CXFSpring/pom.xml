@@ -19,12 +19,23 @@
         <druid.version>1.0.9</druid.version>
         <jackson.version>2.3.1</jackson.version>
         <slf4j.version>1.7.12</slf4j.version>
-        <jetty.version>9.2.9.v20150224</jetty.version>
+        <jetty.version>9.2.14.v20151106</jetty.version>
         <junit.version>4.12</junit.version>
         <testng.version>6.9.4</testng.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm-tree</artifactId>
+            <version>5.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
@@ -64,5 +75,23 @@
     </dependencies>
     <build>
         <finalName>CXFSpring</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty.version}</version>
+            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.codehaus.mojo</groupId>-->
+                <!--<artifactId>exec-maven-plugin</artifactId>-->
+                <!--<version>1.1</version>-->
+                <!--<executions>-->
+                    <!--<execution><goals><goal>java</goal></goals></execution>-->
+                <!--</executions>-->
+                <!--<configuration>-->
+                    <!--<mainClass>org.example.HelloWorld</mainClass>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+        </plugins>
     </build>
 </project>
